@@ -5,6 +5,7 @@ import frame1Path from "./assets/images/frame1.jpg";
 import frame2Path from "./assets/images/frame2.jpg";
 import frame3Path from "./assets/images/frame3.jpg";
 import PopSounds from "./components/PopSounds";
+import Footer from "./components/Footer";
 
 type PopSoundsRef = ElementRef<typeof PopSounds>;
 const framesPath = [frame0Path, frame1Path, frame2Path, frame3Path];
@@ -68,6 +69,7 @@ function App() {
       <div className="relative top-1/2 m-auto flex w-[50vh] translate-y-[-50%] cursor-pointer flex-wrap justify-center justify-items-center md:w-[100vh]">
         {renderFrames(framesBoard)}
       </div>
+      <Footer />
       <PopSounds ref={popSoundsRef} />
     </div>
   );
