@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  user-select: none;
+@layer base {
+  * {
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
 }
