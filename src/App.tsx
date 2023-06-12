@@ -64,8 +64,8 @@ function App() {
   };
 
   return (
-    <div className="w-screen bg-[#A7C9B9]/100">
-      <div className="mx-auto flex h-screen w-[100vh] cursor-pointer flex-wrap justify-center">
+    <div className="fixed inset-0 bg-[#A7C9B9]/100">
+      <div className="relative top-1/2 m-auto flex w-[50vh] translate-y-[-50%] cursor-pointer flex-wrap justify-center justify-items-center md:w-[100vh]">
         {renderFrames(framesBoard)}
       </div>
       <PopSounds ref={popSoundsRef} />
