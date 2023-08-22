@@ -1,5 +1,5 @@
-import type { ElementRef, MouseEvent } from "react";
 import { useRef, useState } from "react";
+import type { ElementRef, MouseEvent } from "react";
 import frame0Path from "./assets/images/frame0.jpg";
 import frame1Path from "./assets/images/frame1.jpg";
 import frame2Path from "./assets/images/frame2.jpg";
