@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import type { ElementRef, MouseEvent } from "react";
 import frame0Path from "./assets/images/frame0.jpg";
 import frame1Path from "./assets/images/frame1.jpg";
@@ -14,6 +14,20 @@ function App() {
   const popSoundsRef = useRef<PopSoundsRef>(null);
   const [framesBoard, setFramesBoard] = useState([...framesPath]);
 
+  const handleNestedFrame = useCallback(
+    (nestedArray: any[], indexList: number[], depth = 0) => {
+      if (depth === indexList.length - 1) {
+        nestedArray[indexList[depth]] = [...framesPath];
+      } else {
+        if (!Array.isArray(nestedArray[indexList[depth]])) {
+          nestedArray[indexList[depth]] = [];
+        }
+        handleNestedFrame(nestedArray[indexList[depth]], indexList, depth + 1);
+      }
+    },
+    []
+  );
+
   const handleMousedown = (
     e: MouseEvent<HTMLDivElement, globalThis.MouseEvent>,
     indexes: number[]
@@ -21,23 +35,9 @@ function App() {
     e.preventDefault();
     popSoundsRef.current?.playRandomSound();
 
-    const setNestedFrame = (
-      nestedArray: any[],
-      indexList: number[],
-      depth = 0
-    ) => {
-      if (depth === indexList.length - 1) {
-        nestedArray[indexList[depth]] = [...framesPath];
-      } else {
-        if (!Array.isArray(nestedArray[indexList[depth]])) {
-          nestedArray[indexList[depth]] = [];
-        }
-        setNestedFrame(nestedArray[indexList[depth]], indexList, depth + 1);
-      }
-    };
-
     const next = [...framesBoard];
-    setNestedFrame(next, indexes);
+    handleNestedFrame(next, indexes);
+
     setFramesBoard(next);
   };
 
