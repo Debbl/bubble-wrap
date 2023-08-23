@@ -1,14 +1,16 @@
 {
   "name": "bubble-wrap",
   "type": "module",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
+  "author": "Debbl <me@aiwan.run> (https://aiwan.run/)",
+  "homepage": "https://github.com/Debbl/bubble-wrap/",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "preview": "vite preview",
     "lint": "eslint . --ignore-path .gitignore",
-    "lint:fix": "eslint . --fix --ignore-path .gitignore",
-    "preview": "vite preview"
+    "lint:fix": "eslint . --fix --ignore-path .gitignore"
   },
   "dependencies": {
     "autoprefixer": "^10.4.14",
@@ -21,8 +23,6 @@
     "@debbl/eslint-config": "^0.0.53",
     "@types/react": "^18.2.17",
     "@types/react-dom": "^18.2.7",
-    "@typescript-eslint/eslint-plugin": "^5.62.0",
-    "@typescript-eslint/parser": "^5.62.0",
     "@vitejs/plugin-react": "^4.0.3",
     "eslint": "^8.46.0",
     "typescript": "^5.1.6",
