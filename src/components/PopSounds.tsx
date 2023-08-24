@@ -5,10 +5,11 @@ import bubbles1Path from "../assets/sounds/bubbles1.mp3";
 import bubbles2Path from "../assets/sounds/bubbles2.mp3";
 import bubbles3Path from "../assets/sounds/bubbles3.mp3";
 
+const bubbles = [bubbles0Path, bubbles1Path, bubbles2Path, bubbles3Path];
+
 const PopSounds: ForwardRefRenderFunction<{
   playRandomSound: () => void;
 }> = (_, ref) => {
-  const bubbles = [bubbles0Path, bubbles1Path, bubbles2Path, bubbles3Path];
   const audioElementsRefs = useRef<HTMLAudioElement[]>([]);
 
   const playRandomSound = () => {

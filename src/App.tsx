@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import type { ElementRef, MouseEvent } from "react";
 import frame0Path from "./assets/images/frame0.jpg";
 import frame1Path from "./assets/images/frame1.jpg";
@@ -10,23 +10,24 @@ import Footer from "./components/Footer";
 type PopSoundsRef = ElementRef<typeof PopSounds>;
 const framesPath = [frame0Path, frame1Path, frame2Path, frame3Path];
 
+const handleNestedFrame = (
+  nestedArray: any[],
+  indexList: number[],
+  depth = 0
+) => {
+  if (depth === indexList.length - 1) {
+    nestedArray[indexList[depth]] = [...framesPath];
+  } else {
+    if (!Array.isArray(nestedArray[indexList[depth]])) {
+      nestedArray[indexList[depth]] = [];
+    }
+    handleNestedFrame(nestedArray[indexList[depth]], indexList, depth + 1);
+  }
+};
+
 function App() {
   const popSoundsRef = useRef<PopSoundsRef>(null);
   const [framesBoard, setFramesBoard] = useState([...framesPath]);
-
-  const handleNestedFrame = useCallback(
-    (nestedArray: any[], indexList: number[], depth = 0) => {
-      if (depth === indexList.length - 1) {
-        nestedArray[indexList[depth]] = [...framesPath];
-      } else {
-        if (!Array.isArray(nestedArray[indexList[depth]])) {
-          nestedArray[indexList[depth]] = [];
-        }
-        handleNestedFrame(nestedArray[indexList[depth]], indexList, depth + 1);
-      }
-    },
-    []
-  );
 
   const handleMousedown = (
     e: MouseEvent<HTMLDivElement, globalThis.MouseEvent>,
@@ -42,8 +43,9 @@ function App() {
   };
 
   const renderFrames = (frames: any[], parentIndex?: string) => {
-    return frames.flatMap((frames, i) => {
+    return frames.map((frames, i) => {
       const key = parentIndex ? `${parentIndex}-${i}` : `${i}`;
+
       if (Array.isArray(frames)) {
         return (
           <div className="flex h-1/2 w-1/2 flex-wrap" key={key}>
