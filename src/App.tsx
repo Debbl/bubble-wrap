@@ -13,7 +13,7 @@ const framesPath = [frame0Path, frame1Path, frame2Path, frame3Path];
 const handleNestedFrame = (
   nestedArray: any[],
   indexList: number[],
-  depth = 0
+  depth = 0,
 ) => {
   if (depth === indexList.length - 1) {
     nestedArray[indexList[depth]] = [...framesPath];
@@ -31,7 +31,7 @@ function App() {
 
   const handleMousedown = (
     e: MouseEvent<HTMLDivElement, globalThis.MouseEvent>,
-    indexes: number[]
+    indexes: number[],
   ) => {
     e.preventDefault();
     popSoundsRef.current?.playRandomSound();
@@ -48,14 +48,14 @@ function App() {
 
       if (Array.isArray(frames)) {
         return (
-          <div className="flex h-1/2 w-1/2 flex-wrap" key={key}>
+          <div className="flex size-1/2 flex-wrap" key={key}>
             {renderFrames(frames, key)}
           </div>
         );
       } else {
         return (
           <div
-            className="h-1/2 w-1/2 select-none"
+            className="size-1/2 select-none"
             onMouseDown={(e) => handleMousedown(e, key.split("-").map(Number))}
             key={key}
           >

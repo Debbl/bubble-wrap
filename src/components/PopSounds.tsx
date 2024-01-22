@@ -22,7 +22,7 @@ const PopSounds: ForwardRefRenderFunction<{
     () => ({
       playRandomSound,
     }),
-    []
+    [],
   );
   return (
     <div className="hidden">
