@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import type { ForwardRefRenderFunction } from "react";
 import { forwardRef, useImperativeHandle, useRef } from "react";
 import bubbles0Path from "../assets/sounds/bubbles0.mp3";

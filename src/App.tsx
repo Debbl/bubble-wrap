@@ -68,7 +68,7 @@ function App() {
 
   return (
     <div className="fixed inset-0 bg-[#A7C9B9]/100">
-      <div className="relative top-1/2 m-auto flex w-[50vh] translate-y-[-50%] cursor-pointer flex-wrap justify-center justify-items-center md:w-[100vh]">
+      <div className="relative top-1/2 m-auto flex w-[50vh] -translate-y-1/2 cursor-pointer flex-wrap justify-center justify-items-center md:w-[100vh]">
         {renderFrames(framesBoard)}
       </div>
       <Footer />
